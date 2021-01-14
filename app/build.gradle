@@ -1,0 +1,82 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.example.gourmetapp"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        coreLibraryDesugaringEnabled true
+
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.navigation:navigation-fragment:2.3.2'
+    implementation 'androidx.navigation:navigation-ui:2.3.2'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+    def work_version = "2.4.0"
+    implementation 'androidx.work:work-runtime:2.4.0'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+
+    implementation group: 'com.backendless', name: 'backendless', version: '5.0.+'
+
+    // required for real-time database and real-time messaging
+    implementation('io.socket:socket.io-client:1.0.0') {
+        // excluding org.json which is provided by Android
+        exclude group: 'org.json', module: 'json'
+    }
+
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.0.9'
+
+    implementation 'com.daimajia.androidanimations:library:2.4@aar'
+    implementation 'org.greenrobot:eventbus:3.2.0'
+// Lottie animations
+    implementation "com.airbnb.android:lottie:3.6.0"
+//cardview
+    implementation "androidx.cardview:cardview:1.0.0"
+//picassso
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+//KLoadingSpin
+    implementation 'com.github.Nikoloutsos:KLoadingSpin:1.1.0'
+//Dialog
+    implementation 'com.github.mejdi14:Flat-Dialog-Android:1.0.5'
+//Toasty
+    implementation 'com.github.GrenderG:Toasty:1.5.0'
+//flashbar
+    implementation 'com.github.matecode:Snacky:1.1.5'
+
+    implementation 'com.google.android.material:material:1.0.0'
+    def room_version = "2.2.6"
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+}
