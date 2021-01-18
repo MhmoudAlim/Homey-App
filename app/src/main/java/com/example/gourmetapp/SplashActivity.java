@@ -35,7 +35,7 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
         lott = findViewById(R.id.lott);
         final TextView textView = findViewById(R.id.textView2);
-        Backendless.initApp(this,"A2B83EC3-2382-E066-FFDA-43CCF14A8B00","CE6F3A5C-20CF-4277-AD8F-3A53F1BEC34E");
+        Backendless.initApp(this,"3862B5B1-0214-8D05-FF32-C64330288A00","22318AF7-72DE-40C8-BD09-067224AA07C2");
         new Handler().postDelayed(() -> {
             Backendless.UserService.isValidLogin(new AsyncCallback<Boolean>() {
                 @Override

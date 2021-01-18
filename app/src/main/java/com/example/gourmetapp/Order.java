@@ -12,25 +12,19 @@ import java.util.Date;
 public class Order {
     @PrimaryKey(autoGenerate = true)
     public int id;
-    public String updated;
-    public int getHeight() {
-        return height;
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
-    }
-
-    public int getWidth() {
-        return width;
-    }
-
-    public void setWidth(int width) {
-        this.width = width;
-    }
 
     public String title;
     public String url;
+
+    public int code;
+    public int height;
+    public int width;
+    public String state;
+
+    //
+    public String updated;
+    public String created;
+    public String objectId;
 
     public String getUpdated() {
         return updated;
@@ -48,10 +42,21 @@ public class Order {
         this.objectId = objectId;
     }
 
-    public String objectId;
-    public int code;
-    public int height;
-    public int width;
-    public String created,state;
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
 
 }

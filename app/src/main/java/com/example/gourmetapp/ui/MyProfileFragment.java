@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
@@ -142,30 +143,28 @@ public class MyProfileFragment extends Fragment {
 
                 flatDialog.setTitle("This is a Project App\n Developed by :")
                         .setFirstButtonText("Mahmoud Hussein")
-                        .setSecondButtonText("Amany Nagy")
-                        .setThirdButtonText("Ahmed Mostafa")
-                        .withFirstButtonListner(v15 -> {
+                        .setSecondButtonText("Contact me")
+                        .setSecondButtonColor(R.color.teal_200)
+                        .withSecondButtonListner(v15 -> {
                             flatDialog.dismiss();
                             Snacky.builder().setActivity(getActivity())
                                     .setDuration(Snacky.LENGTH_LONG)
-                                    .setText("MahmoudHusseinAlim@gmail.com")
+                                    .setText("Let's have a Chat" )
+                                    .setActionText("Email me")
+                                    .setActionClickListener(new View.OnClickListener() {
+                                        @SuppressLint("IntentReset")
+                                        @Override
+                                        public void onClick(View v) {
+                                            Intent intent = new Intent(Intent.ACTION_SENDTO);
+                                            intent.setType("*/*");
+                                            intent.setData(Uri.parse("mailto:"+"MahmoudHusseinAlim@gmail.com"));
+                                            intent.putExtra(Intent.EXTRA_EMAIL, "MahmoudHusseinAlim@gmail.com");
+                                            if (intent.resolveActivity(getActivity().getPackageManager()) != null)
+                                                startActivity(intent);
+                                        }
+                                    })
                                     .info().show();
-                        })
-                        .withSecondButtonListner(v14 -> {
-                            flatDialog.dismiss();
-                            Snacky.builder().setActivity(getActivity())
-                                    .setDuration(Snacky.LENGTH_LONG)
-                                    .setText("amany.nagy333@gmail.com")
-                                    .info().show();
-                        })
-                        .withThirdButtonListner(v13 -> {
-                            flatDialog.dismiss();
-                            Snacky.builder().setActivity(getActivity())
-                                    .setDuration(Snacky.LENGTH_LONG)
-                                    .setText("kamelyooo061@gmail.com")
-                                    .info().show();
-                        })
-                        .isCancelable(true)
+                        }).isCancelable(true)
                         .show();
             }
         });
